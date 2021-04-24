@@ -1,8 +1,7 @@
 package com.liumq.simplejava.mycollection.list;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.Comparator;
 
 public class ListTest3 {
     public static void main(String[] args) {
@@ -13,9 +12,7 @@ public class ListTest3 {
         books.add("疯狂ios讲义");
 
         //使用目标类型为Comparator 的Lambda表达式对目标进行排序
-        books.sort((p, q) -> {
-            return p.length() - q.length();
-        });
+        books.sort(Comparator.comparingInt(String::length));
 
         System.out.println(books);
 
