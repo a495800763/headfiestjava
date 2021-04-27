@@ -79,7 +79,56 @@ public class ShowHead {
      * @param first 最先拍给谁
      */
     public void deliverCard(String first) {
+        //调用ArraysUtils工具类的search方法
+        //查询出指定元素在数列中的索引
+        int firstPos = ArrayUtils.search(players, first);
+        //依次给位于该指定玩家之后的每一位玩家发牌
+        for (int i = firstPos; i < PLAY_NUM; i++) {
+            if (players[i] != null) {
+                playersCards[i].add(cards.get(0));
+                cards.remove(0);
+            }
+        }
+        //依次给位于该玩家之前的每位玩家发牌
+        for (int i = 0; i < firstPos; i++) {
+            if (players[i] != null) {
+                playersCards[i].add(cards.get(0));
+                cards.remove(0);
+            }
+        }
+    }
 
+    public void showPlayerCards() {
+        for (int i = 0; i < PLAY_NUM; i++) {
+            //当玩家不为空时
+            if (players[i] != null) {
+                //输出玩家
+                System.out.print(players[i] + " : ");
+                //遍历输出玩家手上的牌
+                for (String card : playersCards[i]) {
+                    System.out.print(card);
+                }
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public static void main(String[] args) {
+        ShowHead sh = new ShowHead();
+        sh.initPlayer("电脑玩家","柳梦琪");
+        sh.initCards();
+        sh.initPlayerCards();
+        //下面测试所有扑克牌，没有实际作用
+        sh.showAllCards();
+        System.out.println("-------------------");
+        //下面从 柳梦琪开始发牌
+        sh.deliverCard("柳梦琪");
+        sh.showPlayerCards();
+
+
+        //再从电脑玩家处开始发牌
+        sh.deliverCard("电脑玩家");
+        sh.showPlayerCards();
     }
 
 
