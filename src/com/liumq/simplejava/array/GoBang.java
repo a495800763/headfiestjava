@@ -41,17 +41,27 @@ public class GoBang {
         gb.printBoard();
         //这是用于获取键盘输入的方法
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inputStr=null;
-        while ((inputStr=reader.readLine())!=null)
-        {
-            //将用户的输入用逗号做分割符，分割成两个字符串
-            String[] posStrArr = inputStr.split(",");
-            //将两个字符串转换成棋子的坐标
-            int xPos = Integer.parseInt(posStrArr[0]);
-            int yPos = Integer.parseInt(posStrArr[1]);
-            gb.board[yPos-1][xPos-1]="○";
-            gb.printBoard();
-            System.out.println("请输入您下棋的坐标，以x,y格式输入");
+        String inputStr = null;
+        while ((inputStr = reader.readLine()) != null) {
+            try {
+                //将用户的输入用逗号做分割符，分割成2个字符串
+                String[] posStrArr = inputStr.split(",");
+                //将两个字符串转换成棋子的坐标
+                int xPos = Integer.parseInt(posStrArr[0]);
+                int yPos = Integer.parseInt(posStrArr[1]);
+
+                if (!gb.board[xPos - 1][yPos - 1].equals("＋")) {
+                    System.out.println("您输入的坐标点已经有棋子了，请重新输入：");
+                    continue;
+                }
+                gb.board[yPos - 1][xPos - 1] = "○";
+                gb.printBoard();
+                System.out.println("请输入您下棋的坐标，以x,y格式输入");
+            } catch (Exception e) {
+                System.out.println("您输入的坐标不合法，请重新输入，下棋坐标以x,y 格式输入");
+                continue;
+            }
+
         }
     }
 }
