@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * 联系Thread.实现多线程同步下载图片
  */
-public class TestThread2 extends Thread {
+public class TestThread2 implements Runnable {
 
     private String url; //网络图片的地址
     private String name; //保存的文件名
@@ -33,9 +33,9 @@ public class TestThread2 extends Thread {
         TestThread2 t3 = new TestThread2("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=245829137,467143050&fm=26&gp=0.jpg", "image3.jpg");
 
         //t1 t2 t3 的执行完成顺序与启动顺序无关
-        t1.start();
-        t2.start();
-        t3.start();
+        new Thread(t1).start();
+        new Thread(t2).start();
+        new Thread(t3).start();
     }
 }
 
