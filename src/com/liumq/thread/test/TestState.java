@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 /**
  * 观察线程状态的类

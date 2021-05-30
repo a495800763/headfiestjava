@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 import org.apache.commons.io.FileUtils;
 

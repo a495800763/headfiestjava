@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 /**
  * 模拟龟兔赛跑

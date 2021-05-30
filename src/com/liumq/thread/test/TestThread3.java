@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 /**
  * 创建线程方式2：实现runnable接口，重写run方法,

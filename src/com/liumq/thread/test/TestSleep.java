@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 //模拟网络延时：放大问题发生的可能性
 public class TestSleep implements Runnable {

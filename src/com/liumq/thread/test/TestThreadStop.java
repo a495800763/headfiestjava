@@ -1,4 +1,4 @@
-package com.liumq.thread;
+package com.liumq.thread.test;
 
 // 测试stop
 //1 建议线程正常停止，利用次数，不建议死循环
