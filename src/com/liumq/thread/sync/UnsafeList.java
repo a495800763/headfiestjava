@@ -14,7 +14,11 @@ public class UnsafeList {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    list.add(Thread.currentThread().getName());
+                    synchronized (list)
+                    {
+                        list.add(Thread.currentThread().getName());
+                    }
+
                 }
             }).start();
         }
